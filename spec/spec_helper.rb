@@ -1,5 +1,5 @@
-require 'spec_helper'
 require 'httparty'
+require 'rspec'
 
 RSpec.configure do |config|
     config.color = true
@@ -14,14 +14,21 @@ end
 def delete_all
     all = HTTParty.get url("/todos")
     all.each do |todo|
-        HTTParty.delete url("/todos/" + todo["is"].to_s)
-        end
+        HTTParty.delete url("/todos/" + todo["id"].to_s)
+    end
 end
 
 def create_todos(array)
     array.each do |item|
-        HTTParty.post url("/todos"), query.item
+        HTTParty.post url("/todos"), query: item
    end     
+end
+
+def get_id_all
+#    al = HTTParty.get url("/todos")
+#    all.each do |todo|
+#    HTTParty.delete url("/todos/" + todo["id"].to_s)
+    id =  HTTParty.get url("/todos/" + todo["id"].to_s)
 end
 
 #hash = [
