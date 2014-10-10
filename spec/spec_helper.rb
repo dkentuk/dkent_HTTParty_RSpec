@@ -5,7 +5,7 @@ RSpec.configure do |config|
     config.color = true
     config.tty = true
     config.formatter = :documentation
-    end
+end
 
 def url(path)
     "http://lacedeamon.spartaglobal.com#{path}"
@@ -25,10 +25,12 @@ def create_todos(array)
 end
 
 def get_id_all
-#    al = HTTParty.get url("/todos")
-#    all.each do |todo|
-#    HTTParty.delete url("/todos/" + todo["id"].to_s)
-    id =  HTTParty.get url("/todos/" + todo["id"].to_s)
+    @id = HTTParty.get url("/todos")
+    
+    @id.each do |todo|
+        HTTParty.get url("/todos/" + todo["id"].to_s)
+
+    end
 end
 
 #hash = [
