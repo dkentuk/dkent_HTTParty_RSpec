@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 require 'date'
 
@@ -29,7 +28,6 @@ describe "Non-Exisiting Todos Tests" do
         r = HTTParty.get url("/todos/1")
                       
         expect(r.code).to eq(404)
-
     end
     
     ## Test 2
@@ -42,14 +40,13 @@ describe "Non-Exisiting Todos Tests" do
                             title: title,
                             due: due_date
                             }
-        
-#        expect(r["title"]).to eq (title)
-#        expect(r["due"]).to eq(due_date)
+
         expect(r.code).to eq(405)
     end
     
     ## Test 3
     it "should return a 405 after passing empty parameters to an object" do
+        
         r = HTTParty.post url("/todos/1"),
                         query: {}
         
@@ -58,7 +55,8 @@ describe "Non-Exisiting Todos Tests" do
     
     ## Test 4
     it "should provide fail as it does not provid any parameters" do
-                r = HTTParty.put url("/todos/1"),
+        
+        r = HTTParty.put url("/todos/1"),
                         query: {}
         
         expect(r.code).to eq(422)
@@ -74,27 +72,16 @@ describe "Non-Exisiting Todos Tests" do
                             title: title,
                             due: due_date
                             }
-        
-#        expect(r["title"]).to eq (title)
-#        expect(r["due"]).to eq(due_date)
+
         expect(r.code).to eq(404)
     end
+    
     ## Test 6
         it "should return a 404 as the file is not there, therefore it cannont be deleted" do
-                r = HTTParty.delete url("/todos/1"),
+            
+        r = HTTParty.delete url("/todos/1"),
                         query: {}
         
         expect(r.code).to eq(404)
-        end
-    
-    #####
-#        ## Test 6
-#        it "test" do
-#                r = HTTParty.delete url("/todos/#{a}"),
-#                        query: {}
-#        
-#        expect(r.code).to eq(404)
-#        end
-    ####
+    end
 end
-=end

@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 require 'date'
 
@@ -22,13 +21,11 @@ describe "Non-Empty Collection Todos Tests" do
         delete_all
     end
     
-    ## 
+    ## Test 1
     it "should create a Todo Item and succeed" do
         
         r = HTTParty.get url("/todos")
                       
         expect(r.code).to eq(200)
-
     end
 end
-=end

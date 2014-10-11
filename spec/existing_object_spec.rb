@@ -15,7 +15,6 @@ describe "Existing Object Todos Tests" do
             ]
         create_todos hash
         get_id_all
- 
     end
     
     ## cleanup
@@ -30,16 +29,12 @@ describe "Existing Object Todos Tests" do
             query: {}
                       
         expect(r.code).to eq(200)
-
     end
     
     ## Test 2 Post
         it "should create a Todo Item and fail" do
 
-            
         d = HTTParty.post url("/todos/#{@id[0]["id"]}")
-           # query: {}
-           ## puts @id[0][:id]
                       
         expect(d.code).to eq(405)
     end
@@ -56,9 +51,6 @@ describe "Existing Object Todos Tests" do
                             }
         
         expect(r.code).to eq(405)
-        #Can't expect them as they the method is designed to fail
-#        expect(r["title"]).to eq (title)
-#        expect(r["due"]).to eq(due_date)
     end
 
     ## Test 4
@@ -82,10 +74,6 @@ describe "Existing Object Todos Tests" do
                             }
         
         expect(r.code).to eq(200)
-        #Can't expect them as they the method is designed to fail
-#        expect(r["title"]).to eq (title)
-#        expect(r["due"]).to eq(due_date)
     end
-    
 end
     
