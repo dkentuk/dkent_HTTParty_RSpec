@@ -26,18 +26,7 @@ end
 
 def get_id_all
     @id = HTTParty.get url("/todos")
-    
     @id.each do |todo|
         HTTParty.get url("/todos/" + todo["id"].to_s)
-
     end
 end
-
-#hash = [
-#    {title: "Never", due: Date.today.to_s},
-#    {title: "gonna", due: Date.today.to_s},
-#    {title: "give", due: Date.today.to_s},
-#    {title: "you", due: Date.today.to_s},
-#    {title: "up", due: Date.today.to_s},
-#
-#]
